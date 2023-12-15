@@ -1,0 +1,24 @@
+# docker-compose.yaml
+services:
+  prometheus:
+    image: prom/prometheus:v2.36.2
+    build: .
+    privileged: true
+    user: root
+    ports:
+      - 9090:9090
+    container_name: prometheus
+    volumes:
+      - prometheus:/prometheus
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    networks:
+      - nasir
+networks:
+  nasir:
+    external: true
+    name: nasir
+volumes:
+  prometheus:
+    external: true
+    name: prometheus
