@@ -1,0 +1,29 @@
+# docker-compose.yaml
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - grafana_dashboard:/var/lib/grafana/dashboard
+      - grafana_provisioning:/etc/grafana/provisioning
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    networks:
+      - nasir
+networks:
+  nasir:
+    external: true
+    name: nasir
+volumes:
+  grafana_dashboard:
+    external: true
+    name: grafana_dashboard
+  grafana_provisioning:
+    external: true
+    name: grafana_provisioning
