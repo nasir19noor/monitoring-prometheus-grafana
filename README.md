@@ -10,4 +10,6 @@ Follow these steps:
 
 4. If you add node_exporter, modify prometheus.yml
 
+5. To install node-eporter run node-exporter.sh 
+
 
