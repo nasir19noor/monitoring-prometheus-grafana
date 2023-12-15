@@ -8,4 +8,6 @@ Follow these steps:
 
 3. run prometheus/prometheus.sh and grafana/grafana.sh
 
+4. If you add node_exporter, modify prometheus.yml
+
 
